@@ -16,3 +16,4 @@
 //= require moment
 //= require bootstrap 
 //= require fullcalendar 
+//= require events
