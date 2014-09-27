@@ -1,27 +1,51 @@
 <%= form_for @event do |f| %>
-  
-  <%= f.label :title %><br>
-  <%= f.text_field :title, size:'48x1' %><br>
 
-  <%= f.label :description %><br>
-  <%= f.text_area :description, size: '50x5'%><br>
+  <div class="form-group">
+    <%= f.label :title, class: 'control-label' %><br>
+    <%= f.text_field :title, size:'48x1',class: 'form-control' %><br>
+  </div>
 
-  <%= f.label :start %><br>
-  <%= f.datetime_field :start, :class => 'datepicker', size: '48x1' %><br>
+  <div class="form-group">
+    <%= f.label :description, class: 'control-label' %><br>
+    <%= f.text_area :description, size: '50x5', class: 'form-control' %><br>
+  </div>
 
-  <%= f.label :finish %><br>
-  <%= f.datetime_field :finish, :class => 'datepicker', size: '48x1' %><br>
+  <div class="form-group">
+    <label class="control-label" for="event_start">Strat</label>
+    <div class='input-group date' id='datetimepicker1'>
+      <input type='datetime' class="form-control" />
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+    </div>
+  </div>
 
-  <%= f.label :all_day %><br>
-  <%= f.check_box :all_day %>
+  <div class="form-group">
+    <label class="control-label" for="event_finish">Finish</label>
+    <div class='input-group date' id='datetimepicker2'>
+      <input type='datetime' class="form-control" />
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :all_day, class: 'control-label' %><br>
+    <%= f.check_box :all_day %>
+  </div>
 
   <div class="modal-footer">
     <%= f.submit :class => 'btn'%>
   </div>
 <% end %>
 
-<script>
-$( ".datepicker" ).datepicker();
+<script type="text/javascript">
+    var datepicker = $(function () {
+            $('#datetimepicker1').datetimepicker();
+            $('#datetimepicker2').datetimepicker();
+          });
 </script>
+
 
 

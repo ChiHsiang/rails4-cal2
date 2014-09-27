@@ -15,5 +15,6 @@
 //= require jquery-ui
 //= require moment
 //= require bootstrap 
+//= require bootstrap-datetimepicker
 //= require fullcalendar 
 //= require events
