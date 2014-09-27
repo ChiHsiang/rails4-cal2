@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20140925053538) do
     t.string   "title"
     t.text     "description"
     t.datetime "start"
-    t.datetime "end"
+    t.datetime "finish"
     t.boolean  "all_day",     default: false
     t.datetime "created_at"
     t.datetime "updated_at"

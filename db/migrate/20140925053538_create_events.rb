@@ -4,7 +4,7 @@ class CreateEvents < ActiveRecord::Migration
     create_table :events do |t|
       t.string :title
       t.text :description
-      t.datetime :start, :end
+      t.datetime :start, :finish
       t.boolean :all_day, default: false
 
       t.timestamps

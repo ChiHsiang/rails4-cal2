@@ -11,8 +11,10 @@ $(document).ready(function() {
         center: 'title',
         right: 'month,agendaWeek,agendaDay'
       },
-      events: '/events.json'
-
+      editable: true,
+      resizable: true,
+      events: '/events.json',
+      
     });
 
 });

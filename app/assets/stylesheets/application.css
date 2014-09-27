@@ -15,4 +15,6 @@
  *= require bootstrap
  *= require fullcalendar 
  *= require events
+ *= require layout
+ *= require modal
  */

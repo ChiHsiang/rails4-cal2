@@ -1,0 +1,27 @@
+<%= form_for @event do |f| %>
+  
+  <%= f.label :title %><br>
+  <%= f.text_field :title, size:'48x1' %><br>
+
+  <%= f.label :description %><br>
+  <%= f.text_area :description, size: '50x5'%><br>
+
+  <%= f.label :start %><br>
+  <%= f.datetime_field :start, :class => 'datepicker', size: '48x1' %><br>
+
+  <%= f.label :finish %><br>
+  <%= f.datetime_field :finish, :class => 'datepicker', size: '48x1' %><br>
+
+  <%= f.label :all_day %><br>
+  <%= f.check_box :all_day %>
+
+  <div class="modal-footer">
+    <%= f.submit :class => 'btn'%>
+  </div>
+<% end %>
+
+<script>
+$( ".datepicker" ).datepicker();
+</script>
+
+
