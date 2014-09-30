@@ -16,7 +16,9 @@ class EventsController < ApplicationController
   end
 
   def edit
-    
+    respond_to do |format|
+      format.json { render json: @event }
+    end
   end
 
   def update
@@ -25,9 +27,9 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    if @event.save
-      redirect_to events_path
-    end
+    @event.save
+    redirect_to events_path
+    
   end
 
   def destroy

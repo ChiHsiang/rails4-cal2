@@ -27,6 +27,7 @@ $(document).ready(function() {
       clear_form();
     });
 
+
 });
 
 function calendar_event_clicked(cal_event, js_event, view) {
@@ -63,3 +64,5 @@ function update_event() {
       dataType: 'json' // format of the response
   });
 }
+
+
