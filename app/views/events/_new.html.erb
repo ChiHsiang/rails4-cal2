@@ -12,8 +12,9 @@
 
   <div class="form-group">
     <label class="control-label" for="event_start">Strat</label>
-    <div class='input-group date' id='datetimepicker1'>
-      <input type='datetime' class="form-control" />
+    <div class='input-group date' id='datetimepicker1' >
+      <input type='datetime' class="form-control" id="event_start" 
+             name="event[start]" data-date-format="YYYY/MM/DD HH:mm" >
       <span class="input-group-addon">
         <span class="glyphicon glyphicon-calendar"></span>
       </span>
@@ -23,7 +24,8 @@
   <div class="form-group">
     <label class="control-label" for="event_finish">Finish</label>
     <div class='input-group date' id='datetimepicker2'>
-      <input type='datetime' class="form-control" />
+      <input type='datetime' class="form-control" id="event_finish" 
+             name="event[finish]"data-date-format="YYYY/MM/DD HH:mm"  >
       <span class="input-group-addon">
         <span class="glyphicon glyphicon-calendar"></span>
       </span>
@@ -36,7 +38,7 @@
   </div>
 
   <div class="modal-footer">
-    <%= f.submit :class => 'btn'%>
+    <%= f.submit :class => 'btn', :id => 'submit-btn'%>
   </div>
 <% end %>
 
