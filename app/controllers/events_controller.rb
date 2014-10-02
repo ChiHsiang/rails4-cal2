@@ -26,7 +26,7 @@ class EventsController < ApplicationController
 
   def update
    @event.update(event_params) 
-   redirect_to root_path
+   render :nothing => true
   end
 
   def create
@@ -37,6 +37,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy   
+    render :nothing => true
   end
 
   private

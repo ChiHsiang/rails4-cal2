@@ -82,8 +82,8 @@ function update_event(id , params) {
       type: "PUT",
       url: path,
       data:params,
-      succress: function(data){
-        alert(data);
+      success: function(data){
+        location.reload();
       }
   });
 }
@@ -105,7 +105,10 @@ function delete_event(id) {
   $.ajax({
     type: "DELETE",
     url: path,
-    data: id
+    data: id,
+    success: function(data) {
+      location.reload();
+    }
   });
 }
 
