@@ -23,7 +23,8 @@ $(document).ready(function() {
         calendar_event_clicked(event);
         get_edit_event(event);
         var update_btn = $('#commit').attr('type','button');
-        console.log(event);
+        $('#delete').attr('style', 'display:inline');
+        $('#commit').addClass('btn-warning');
       }
     });
     
@@ -31,8 +32,10 @@ $(document).ready(function() {
     $('#create-event').bind('click', function(){
       clear_form();
       get_new_event();
+      $('#delete').attr('style', 'display:none');
       var create_form = $('#event_form').attr('method', 'post');
-      var create_btn = $('#commit').text('Create Event').val('create');
+      var create_btn = $('#commit').text('Create Event')
+                       .val('create').removeClass('btn-warning');
     });
 
     $('#commit').bind('click', function(){
@@ -41,6 +44,11 @@ $(document).ready(function() {
         var id = $('input#id').val();
         update_event(id, $('#event_form').serialize());
       }
+    });
+
+    $('#delete').bind('click', function(){
+      var id = $('input#id').val();
+      delete_event(id);
     });
 
 });
@@ -89,6 +97,15 @@ function get_new_event() {
 function get_edit_event(cal_event) {
   var url = "/events/" + cal_event.id + "/edit.json";
   $.get(url, function( data ){
+  });
+}
+
+function delete_event(id) {
+  var path = "/events/" + id;
+  $.ajax({
+    type: "DELETE",
+    url: path,
+    data: id
   });
 }
 
