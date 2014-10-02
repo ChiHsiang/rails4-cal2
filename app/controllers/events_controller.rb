@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   def index
     @events = Event.all 
     @events = Event.event_obj(@events)
-    @event = Event.new
+    #@event = Event.new
     respond_to do |format|
       format.html
       format.json { render json: @events}
@@ -13,6 +13,9 @@ class EventsController < ApplicationController
 
   def new
     @event = Event.new 
+    respond_to do |format|
+      format.json { render json: @event }
+    end
   end
 
   def edit
@@ -22,18 +25,18 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = JSON.parse params[:page]
+   @event.update(event_params) 
+   redirect_to root_path
   end
 
   def create
     @event = Event.new(event_params)
     @event.save
     redirect_to events_path
-    
   end
 
   def destroy
-      
+    @event.destroy   
   end
 
   private

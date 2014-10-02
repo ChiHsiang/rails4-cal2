@@ -1,4 +1,4 @@
-<form accept-charset="UTF-8"  action="/events" >
+<form id="event_form" accept-charset="UTF-8" action="/events">
   <div style="display:none">
     <input type="hidden" name="utf8" value="&#x2713;" >
     <input type="hidden" name="authenticity_token" value="e3a6e2ed24b525a5f7adff17a8d4d53514eca79cc8d61b671b71c6d4badfd16db3281080a6a1565162bedbae752760ef0d3883ea66aff9740ebc6fa7c2e11801">
@@ -45,7 +45,9 @@
   </div>
 
   <div class="modal-footer">
-    <input class="btn" id="submit-btn" name="commit" type="submit" value="Create Event">
+    <button id="commit" type="submit" class="btn btn-default" value="" >
+      Create Event
+    </button>
   </div>
 </form>
 

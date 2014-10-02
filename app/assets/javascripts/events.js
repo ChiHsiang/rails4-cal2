@@ -2,7 +2,6 @@
 // All this logic will automatically be available in application.js.
 //
 $(document).ready(function() {
-
     // page is now ready, initialize the calendar...
 
     $('#calendar').fullCalendar({
@@ -15,18 +14,34 @@ $(document).ready(function() {
       resizable: true,
       events: 'events.json',
 
-      eventClick: function(event) {
-        
+      eventClick: function(event,a,b) {
+
         $('#myModal').modal('show');
+        $('input#id').remove();
+        var input = $('<input id="id" type="hidden" />');
+        $('#event_form').append(input);
         calendar_event_clicked(event);
+        get_edit_event(event);
+        var update_btn = $('#commit').attr('type','button');
+        console.log(event);
       }
-
     });
-
+    
+    
     $('#create-event').bind('click', function(){
       clear_form();
+      get_new_event();
+      var create_form = $('#event_form').attr('method', 'post');
+      var create_btn = $('#commit').text('Create Event').val('create');
     });
 
+    $('#commit').bind('click', function(){
+      var commit_val = $('#commit').val();
+      if (commit_val === 'update') {
+        var id = $('input#id').val();
+        update_event(id, $('#event_form').serialize());
+      }
+    });
 
 });
 
@@ -36,12 +51,13 @@ function calendar_event_clicked(cal_event, js_event, view) {
 }
 
 function set_event_generation_values(event_id, title, description, start, end, all_day) {
- 
+
+  $('input#id').val(event_id);
   $('#event_title').val(title);
   $('#event_description').val(description);
   $('#event_start').val(start);
   $('#event_finish').val(end);
-  $('#submit-btn').val('Update Event');
+  $('#commit').val('update').text('Update Event');
 }
 
 function clear_form() {
@@ -49,20 +65,30 @@ function clear_form() {
   $('#event_description').val('');
   $('#event_start').val('');
   $('#event_finish').val('');
-  $('#submit-btn').val('Create Event');
+  $('#commit').val('create');
 }
 
-function update_event() {
-
+function update_event(id , params) {
+  var path = "/events/" + id ;
   $.ajax({
-      type: "POST",
-      url: '/events.update',
-      data: { page: JSON.stringify({
-        })
-      },
-      contentType: 'application/json', // format of request payload
-      dataType: 'json' // format of the response
+      type: "PUT",
+      url: path,
+      data:params,
+      succress: function(data){
+        alert(data);
+      }
   });
 }
 
+function get_new_event() {
+  var url = "/events/new.json";
+  $.get(url, function( data ){
+  });
+}
+
+function get_edit_event(cal_event) {
+  var url = "/events/" + cal_event.id + "/edit.json";
+  $.get(url, function( data ){
+  });
+}
 
